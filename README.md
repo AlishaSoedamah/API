@@ -1,11 +1,22 @@
 # API
 
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
 ## De opdacht
-...
+Maak een overview pagina en een detail pagina
 
 # Week 1
 ### Dag 1 • kickoff
 #### Woensdag 01.04.26
+
+Een Astro site opgezet.
 
 ### Voortgang week 1
 <details>

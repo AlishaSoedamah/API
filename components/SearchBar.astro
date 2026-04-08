@@ -1,0 +1,57 @@
+<aside>
+	<p>Search a flight</p>
+	<input type="text" placeholder="Search..">
+	<h3>From</h3>
+	<div>
+		<h4>this is the flight</h4>
+		<p>some data</p>
+		<span>Status: Active</span>
+	</div>
+	<h3>To</h3>
+	<div>
+		<h4>this is the flight</h4>
+		<p>some data</p>
+		<span>Status: Active</span>
+	</div>
+</aside>
+
+<style>
+	:root {
+		--lines: rgb(118, 118, 118);
+	}
+
+	input {
+		padding: 10px;
+		margin: 25px;
+		background: transparent;
+		border: none;
+		outline: 1px solid var(--lines);
+		color: white;
+	}
+
+	aside {
+		outline: 1px solid var(--lines);
+		width: 30%;
+		height: 100vh;
+	}
+
+	div {
+		outline: 1px solid var(--lines);
+		padding: 1em;
+		margin: 25px;
+	}
+
+	span {
+		display: relative;
+	}
+
+	span::after {
+		position: absolute;
+		content: "";
+		margin: 0 10px;
+		width: 10px;
+		aspect-ratio: 1;
+		background-color: rgb(47, 255, 54);
+		border-radius: 10px;
+	}
+</style>

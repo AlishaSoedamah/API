@@ -53,7 +53,7 @@ Wat we hebben besproken:
 
 - [github globe animation](https://www.youtube.com/watch?v=ddIZlWmfFKM)
 
-Ideeën voor connecteis
+Ideeën voor connecties
 - https://rapidapi.com/RyanFin/api/mountain-api1
 - https://www.mountain-forecast.com/peaks/Api
 
@@ -64,6 +64,10 @@ Ideeën voor connecteis
 ### Dag 2
 #### Woensdag 08.04.26
 
+<b>Wat heb ik vandaag gedaan?</b>
+- Workshop over components in astro gedaan
+- three.js in mijn astro project gezet
+- Sphere in three.js gemaakt
 Een simpele textured 3D globe in Three.js:
 
 ```
@@ -103,6 +107,14 @@ Een simpele textured 3D globe in Three.js:
 
 	animate();
 ```
+<b>Hoeveel tijd heeft me dat gekost?</b>
+De hele dag
+
+
+<b>Wat heb ik geleerd?</b>
+Meer over astro en three.js
+
+
 ### Dag 3
 #### Donderdag 09.04.26
 

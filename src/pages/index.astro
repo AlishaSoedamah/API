@@ -2,7 +2,7 @@
 // const url = "https://jsonplaceholder.typicode.com/todos";
 // const response = await fetch(url);
 // const todos = await response.json();
-
+import Header from "../../components/Header.astro"
 const key = import.meta.env.KEY;
 
 const url = "https://api.api-ninjas.com/v1/stars?name=vega";
@@ -23,9 +23,11 @@ console.log(stars);
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="../../styles/global.css">
 		<title>kat</title>
 	</head>
 	<body>
-		<h1>{stars[0].name} is the star of the day</h1>
+		<Header />
+		<!-- <h1>{stars[0].name} is the star of the day</h1> -->
 	</body>
 </html>

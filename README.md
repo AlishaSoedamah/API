@@ -43,7 +43,20 @@ Een stock app waar je bedrijven kan opzoeken...
 ### Voortgang week 1
 <details>
 <summary> Donderdag 02.04.26 </summary>
+
+Het is wel een leuk idee maar
 Wat we hebben besproken:
+
+- Misschien andere data vinden waar je een visualisatie van kunt maken (de stockmarket API haalt maar 1 market op)
+
+- Als je 3D gaat doen met Threes.js (webGL) dan wordt dan erg veel werk (bedenk of je dat echt wil doen of toch iets anders kiest)
+
+- [github globe animation](https://www.youtube.com/watch?v=ddIZlWmfFKM)
+
+Ideeën voor connecteis
+- https://rapidapi.com/RyanFin/api/mountain-api1
+- https://www.mountain-forecast.com/peaks/Api
+
 </details>
 
 # Week 2
@@ -51,6 +64,45 @@ Wat we hebben besproken:
 ### Dag 2
 #### Woensdag 08.04.26
 
+Een simpele textured 3D globe in Three.js:
+
+```
+	import * as THREE from 'three';
+	import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+	const w = window.innerWidth;
+	const h = window.innerHeight;
+	const scene = new THREE.Scene(); //container waar de HELE 3D scene in gaat
+	const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 100); //wat de viewer ziet, een gedeelde van de 3D scene
+	camera.position.z = 5; //camera pos
+
+	const renderer = new THREE.WebGLRenderer({antialias: true}); //Maakt een nieuwe WebGL renderer
+
+	renderer.setSize(w, h);
+	document.body.appendChild(renderer.domElement);
+
+	new OrbitControls(camera, renderer.domElement); //let camera orbit around object
+
+	const loader = new THREE.TextureLoader();
+	const geometry = new THREE.IcosahedronGeometry(1, 12);
+	const material = new THREE.MeshStandardMaterial({map: loader.load("earthcloudmap.jpg")});
+	const earthMesh = new THREE.Mesh(geometry, material);
+
+	scene.add(earthMesh);
+
+	const hemi = new THREE.HemisphereLight(0xffffff, 0x444444);
+	scene.add(hemi);
+
+	function animate()
+	{
+		requestAnimationFrame(animate);
+		earthMesh.rotation.x += 0.001;
+		earthMesh.rotation.y += 0.001;
+		renderer.render(scene, camera);
+	}
+
+	animate();
+```
 ### Dag 3
 #### Donderdag 09.04.26
 

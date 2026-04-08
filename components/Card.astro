@@ -1,0 +1,39 @@
+---
+const {title, place, stat} = Astro.props;
+---
+
+<div>
+	<h4>{title}</h4>
+	<p>{place}</p>
+	<span>{stat}</span>
+</div>
+
+<style>
+	:root {
+		--lines: rgb(118, 118, 118);
+	}
+
+	p {
+		margin: 10px 0;
+	}
+
+	div {
+		outline: 1px solid var(--lines);
+		padding: 1em;
+		margin: 25px;
+	}
+
+	span {
+		display: relative;
+	}
+
+	span::after {
+		position: absolute;
+		content: "";
+		margin: 0 10px;
+		width: 10px;
+		aspect-ratio: 1;
+		background-color: rgb(47, 255, 54);
+		border-radius: 10px;
+	}
+</style>

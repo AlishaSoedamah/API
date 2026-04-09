@@ -1,11 +1,11 @@
 ---
-const {title, place, stat} = Astro.props;
+const {title, place, route} = Astro.props;
 ---
 
 <div>
-	<h4>{title}</h4>
-	<p>{place}</p>
-	<span>{stat}</span>
+	<h4>Origin Country: {title}</h4>
+	<p>Callsign: {place}</p>
+	<span>{route}</span>
 </div>
 
 <style>

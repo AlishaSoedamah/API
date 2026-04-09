@@ -1,14 +1,26 @@
 ---
 import Card from "./Card.astro";
+
+const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+// const url = "https://opensky-network.org/api/states/all?time=1458564121&icao24=3c6444";
+const response = await fetch(url);
+const flightInfo = await response.json();
+// console.log(flightInfo);
 ---
 
 <aside>
 	<p>Search a flight</p>
+	<p>Total Aircraft: 6259</p>
 	<input type="text" placeholder="Search..">
 	<h3>From</h3>
-	<Card title="This is the flight" place="some data"  stat="Status: active"/>
-	<h3>To</h3>
-	<Card title="This is the flight2" place="some other data" stat="Status: active"/>
+	{ flightInfo.states.map(state => {
+		const [route, place, title] = state;
+		return (
+			<Card title={title} place={place} route={route}/>
+		)
+	})}
+	<!-- <Card title={flightInfo.states[0][2]} place={flightInfo.states[0][1]} route={flightInfo.states[0][0]}/>
+	<Card title={flightInfo.states[1][2]} place={flightInfo.states[1][1]} route={flightInfo.states[1][0]}/> -->
 </aside>
 
 <style>

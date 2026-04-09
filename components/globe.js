@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const w = window.innerWidth;
+const w = 1000;
 const h = window.innerHeight;
 const scene = new THREE.Scene();
 
@@ -16,23 +16,16 @@ ctrls.enableDamping = true;
 
 const geometry = new THREE.SphereGeometry(2);
 const lineMat = new THREE.LineBasicMaterial({color: 0xffffff});
-const edges = new THREE.EdgesGeometry(geometry, 1);
+const edges = new THREE.EdgesGeometry(geometry, 0);
 const line = new THREE.LineSegments(edges, lineMat);
 
 scene.add(line);
-const material = new THREE.MeshStandardMaterial({
-
-});
-const globe = new THREE.Mesh(geometry, material);
-scene.add(globe);
 
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444);
 scene.add(hemiLight);
 
 function animate() {
 	requestAnimationFrame(animate);
-	//   globe.rotation.x += 0.1;
-	//   globe.rotation.y += 0.2;
 	renderer.render(scene, camera);
 	ctrls.update();
 }

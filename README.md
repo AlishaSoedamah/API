@@ -118,6 +118,11 @@ Meer over astro en three.js
 ### Dag 3
 #### Donderdag 09.04.26
 
+API voor de data die ik wil ophalen: https://openskynetwork.github.io/opensky-api/
+<b>Wat heb ik vandaag gedaan?</b>
+<b>Hoeveel tijd heeft me dat gekost?</b>
+<b>Wat heb ik geleerd?</b>
+
 ### Voortgang week 2
 <details>
 <summary> Vrijdag 10.04.26 </summary>

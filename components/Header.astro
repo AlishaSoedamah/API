@@ -1,8 +1,18 @@
+---
+
+const dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const date = new Date();
+const day = date.getDay();
+const dayNum = date.getDate();
+const month = date.getMonth();
+---
+
 <header>
 	<h1>Flights</h1>
 	<div>
-		<h2>Wednesday</h2>
-		<span>April, 8th</span>
+		<h2>{dayArr[day]}</h2>
+		<span>{dayNum} {monthArr[month]}</span>
 	</div>
 </header>
 

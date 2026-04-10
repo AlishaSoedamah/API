@@ -18,7 +18,6 @@ Maak een overview pagina en een detail pagina
 ### Dag 1 • kickoff
 #### Woensdag 01.04.26
 
-
 <b>Wat heb ik vandaag gedaan?</b>
 - Node op mijn laptop geïnstalleerd
 - Astro opgezet
@@ -26,7 +25,7 @@ Maak een overview pagina en een detail pagina
 https://api-ninjas.com/api/stockexchange
 
 Design:
-<img src="public/stock-app.png">
+<img src="readme/stock-app.png">
 
 <b>Hoeveel tijd heeft me dat gekost?</b>
 6 uur
@@ -105,6 +104,8 @@ Een simpele textured 3D globe in Three.js:
 
 	animate();
 ```
+<img src="readme/mat.png">
+<img src="readme/mat2.png">
 <b>Hoeveel tijd heeft me dat gekost?</b>
 De hele dag
 

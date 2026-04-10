@@ -11,16 +11,18 @@
 
 ## De opdacht
 
-Maak een server side rendered website die gebruikmaakt van web-en content API's
-Maak een overview pagina en een detail pagina
+Maak een server side rendered website die gebruikmaakt van 1 web API en 2 content API's.
+Eisen:
+- Een overview pagina
+- Een een detail pagina
 
 # Week 1
 ### Dag 1 • kickoff
 #### Woensdag 01.04.26
 
 <b>Wat heb ik vandaag gedaan?</b>
-- Node op mijn laptop geïnstalleerd
-- Astro opgezet
+- Node.js op mijn laptop geïnstalleerd
+- Astro template opgezet
 - Eerste idee bedacht voor de overzicht en detail pagina met Stock Exchange API
 https://api-ninjas.com/api/stockexchange
 
@@ -43,11 +45,11 @@ Een stock app waar je bedrijven kan opzoeken...
 <details>
 <summary> Donderdag 02.04.26 </summary>
 
-Het is wel een leuk idee maar
 Wat we hebben besproken:
-
-- Misschien andere data vinden waar je een visualisatie van kunt maken (de stockmarket API haalt maar 1 market op)
+- Het is wel een leuk idee maar als je een 3D wereld gaat maken dan moet je er wel iets op kunnen visualiseren.
+- Misschien andere data vinden waar je een visualisatie van kunt maken (de stockmarket API haalt maar 1 market op i.p.v meerdere).
 - Als je 3D gaat doen met Threes.js (webGL) dan wordt dan erg veel werk (bedenk of je dat echt wil doen of toch iets anders kiest)
+- Als je Three.js/WebGL gebruikt dan hoef je maar 1 web API te gebruiken in plaats van 2
 - [github globe animation](https://www.youtube.com/watch?v=ddIZlWmfFKM)
 
 Ideeën voor connecties

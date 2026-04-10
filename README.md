@@ -48,9 +48,7 @@ Het is wel een leuk idee maar
 Wat we hebben besproken:
 
 - Misschien andere data vinden waar je een visualisatie van kunt maken (de stockmarket API haalt maar 1 market op)
-
 - Als je 3D gaat doen met Threes.js (webGL) dan wordt dan erg veel werk (bedenk of je dat echt wil doen of toch iets anders kiest)
-
 - [github globe animation](https://www.youtube.com/watch?v=ddIZlWmfFKM)
 
 Ideeën voor connecties
@@ -112,7 +110,7 @@ De hele dag
 
 
 <b>Wat heb ik geleerd?</b>
-Meer over astro en three.js
+Meer over astro en three.js, het opzetten van beide is vrij simpel
 
 
 ### Dag 3
@@ -120,13 +118,21 @@ Meer over astro en three.js
 
 API voor de data die ik wil ophalen: https://openskynetwork.github.io/opensky-api/
 <b>Wat heb ik vandaag gedaan?</b>
+Ik heb vandaag geprobeerd GEO API data op een sphere te zetten maar dit lukte me niet. Ik heb andere data uit de opensky api kunnen halen.
+
 <b>Hoeveel tijd heeft me dat gekost?</b>
-<b>Wat heb ik geleerd?</b>
+Halve dag
 
 ### Voortgang week 2
 <details>
 <summary> Vrijdag 10.04.26 </summary>
 Wat we hebben besproken:
+
+- Laat 1 puntje op de wereld bol zien
+- Visuals van de werled bol? Hoe gaan die eruit zien
+- Eerst de vluchten van Nederland laten zien/filter in je URL eerst op vluchten die vanuit Nederland vertrekken
+- Bedenk wat je echt wilt laten zien en echt in de site moet hebben
+- Volgende donderdag -> knallen
 </details>
 
 # Week 3

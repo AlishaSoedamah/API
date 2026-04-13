@@ -67,7 +67,11 @@ Ideeën voor connecties
 - Workshop over components in astro gedaan
 - three.js in mijn astro project gezet
 - Sphere in three.js gemaakt
-Een simpele textured 3D globe in Three.js:
+
+Mijn eerste three.js sphere: 
+<img src="readme/first3js.png">
+
+Een simpele textured 3D globe in Three.js gemaakt:
 
 ```
 	import * as THREE from 'three';
@@ -106,8 +110,10 @@ Een simpele textured 3D globe in Three.js:
 
 	animate();
 ```
+Textured sphere:
 <img src="readme/mat.png">
 <img src="readme/mat2.png">
+
 <b>Hoeveel tijd heeft me dat gekost?</b>
 De hele dag
 
@@ -122,6 +128,7 @@ Meer over astro en three.js, het opzetten van beide is vrij simpel
 API voor de data die ik wil ophalen: https://openskynetwork.github.io/opensky-api/
 <b>Wat heb ik vandaag gedaan?</b>
 Ik heb vandaag geprobeerd GEO API data op een sphere te zetten maar dit lukte me niet. Ik heb andere data uit de opensky api kunnen halen.
+<img src="readme/data.png">
 
 <b>Hoeveel tijd heeft me dat gekost?</b>
 Halve dag

@@ -148,6 +148,9 @@ Wat we hebben besproken:
 # Week 3
 ### Dag 4
 #### Donderdag 16.04.26
+Half dagje api
+wat heb ik gedaan? 
+
 
 ### Voortgang week 3
 <details>

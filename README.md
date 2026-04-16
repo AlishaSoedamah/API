@@ -150,13 +150,15 @@ Wat we hebben besproken:
 #### Donderdag 16.04.26
 Half dagje api
 wat heb ik gedaan? 
+Inspo gevonden voor het ontwerp van de sphere.
+- Ik wil een soort van wireframe 3d wereldbol een beetje dit ontwerp:
+<img src="readme/want.png">
 
+- Of ik ga meer de techy kant op met de stijl: 
+<img src="readme/wimsy.png">
 
-### Voortgang week 3
-<details>
-<summary> Vrijdag 17.04.26 </summary>
-Wat we hebben besproken:
-</details>
+Nu met een normale texture ziet het er saai uit
+<img src="readme/cur.png">
 
 # Week 4
 ### Dag 5

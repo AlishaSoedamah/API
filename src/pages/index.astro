@@ -1,4 +1,6 @@
 ---
+import { Agent, setGlobalDispatcher } from 'undici';
+setGlobalDispatcher(new Agent({ connect: { family: 4 } }));
 import Header from "../../components/Header.astro"
 import SearchBar from "../../components/SearchBar.astro"
 import GlobeContainer from "../../components/GlobeContainer.astro"

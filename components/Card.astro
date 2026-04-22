@@ -1,11 +1,13 @@
 ---
-const {title, place, route} = Astro.props;
+const {title, place, route, latitude, longitude} = Astro.props;
 ---
 
 <div>
 	<h4>Origin Country: {title}</h4>
 	<p>Callsign: {place}</p>
 	<span>{route}</span>
+	<p>lan {longitude}</p>
+	<p>lat {latitude}</p>
 </div>
 
 <style>

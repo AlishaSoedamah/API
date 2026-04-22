@@ -9,10 +9,10 @@ const flightInfo = await response.json();
 ---
 
 <aside>
-	<p>Search a flight</p>
+	<label for="search-bar">Search a flight</label>
+	<input type="search" id="search-bar">
+	<button>Search</button>
 	<p>Total Aircraft: 6259</p>
-	<input type="text" placeholder="Search..">
-	<h3>From</h3>
 	{ flightInfo.states.map(state => {
 		const [route, place, title] = state;
 		return (

@@ -202,7 +202,26 @@ Particles Layer?
 
 ### Dag 6
 #### Donderdag 23.04.26
+**wat heb ik gedaan vandaag?**
+De data van de detail pagina 
 
+de json data anders fetches (via een file) als de site op onrender staat met deze code
+```
+import staticData from "./../all.json" assert { type: "json" };
+
+let flightInfo = undefined;
+let onrender = import.meta.env.ONRENDER;
+
+if (onrender)
+{
+	flightInfo = staticData;
+}
+else {
+	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+	const response = await fetch(url);
+	flightInfo = await response.json();
+	}
+```
 
 ### Voortgang week 4
 <details>

@@ -5,21 +5,17 @@ import GlobeContainer from "../../components/GlobeContainer.astro"
 import staticData from "./../all.json" assert { type: "json" };
 
 let flightInfo = undefined;
-
 let onrender = import.meta.env.ONRENDER;
 
-
-if (true)
+if (onrender)
 {
 	flightInfo = staticData;
 }
-// else {
-// 	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-// 	const response = await fetch(url);
-// flightInfo = await response.json();
-// }
-
-
+else {
+	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+	const response = await fetch(url);
+	flightInfo = await response.json();
+}
 
 ---
 
@@ -41,7 +37,8 @@ if (true)
 		<script define:vars={{flightInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
-			.globeImageUrl('./big.jpg')
+			.globeImageUrl('./temp.png')
+			// .globeImageUrl('./big.jpg')
 
 			globe
 			.pointsData(

@@ -2,46 +2,25 @@
 import Header from "../../components/Header.astro"
 import SearchBar from "../../components/SearchBar.astro"
 import GlobeContainer from "../../components/GlobeContainer.astro"
+import staticData from "./../all.json" assert { type: "json" };
 
-const CLIENT_ID = import.meta.env.CLIENT_ID;
-const CLIENT_SECRET = import.meta.env.CLIENT_SECRET;
+let flightInfo = undefined;
 
-const response = await fetch(
-  'https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token',
-  {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({
-      grant_type: 'client_credentials',
-      client_id: CLIENT_ID,
-      client_secret: CLIENT_SECRET,
-    }),
-  }
-);
+let onrender = import.meta.env.ONRENDER;
 
-const data = await response.json();
-const access_token = data.access_token;
-console.log(access_token);
 
-const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-const response2 = await fetch(url, {
-	headers: {
-		Authorization: `Bearer ${access_token}`
-	}
-});
-const flightInfo = await response2.json();
-console.log(flightInfo);
+if (onrender)
+{
+	flightInfo = staticData;
+}
+else {
+	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+	const response = await fetch(url);
+flightInfo = await response.json();
+}
 
-// const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-// const response = await fetch(url);
-// const flightInfo = await response.json();
 
-//longitude
-// console.log(flightInfo.states[0][5]);
-//latitude
-// console.log(flightInfo.states[0][6]);
+
 ---
 
 <html lang="en">

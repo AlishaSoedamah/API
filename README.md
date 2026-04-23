@@ -152,8 +152,6 @@ Half dagje api
 wat heb ik gedaan? 
 Inspo gevonden voor het ontwerp van de sphere.
 - Ik wil een soort van wireframe 3d wereldbol een beetje dit ontwerp:
-<img src="readme/want.png">
-
 - Of ik ga meer de techy kant op met de stijl: 
 <img src="readme/wimsy.png">
 
@@ -163,6 +161,36 @@ Nu met een normale texture ziet het er saai uit
 # Week 4
 ### Dag 5
 #### Woensdag 22.04.26
+**wat heb ik gedaan?**
+Geprobeerd de website live te zetten met Render en Netlify alleen lukte dit niet omdat de API een ```Timeout Error``` gaf op beide :( 
+Blijkbaar blokeerd Opensky iets waardoor het live zetten steeds niet lukt.
+
+```
+	const CLIENT_ID = import.meta.env.CLIENT_ID;
+	const CLIENT_SECRET = import.meta.env.CLIENT_SECRET;
+
+	const response = await fetch(
+	'https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token',
+	{
+		method: 'POST',
+		headers: {
+		'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: new URLSearchParams({
+		grant_type: 'client_credentials',
+		client_id: CLIENT_ID,
+		client_secret: CLIENT_SECRET,
+		}),
+	}
+	);
+
+```
+
+Nog meer problemen: Opensky gebruikt alleen de longitude and latitude van waar het vliegtuig NU staat en niet de 
+start/eind punten. 
+Ik ga nu visualiseren waar de vliegtuigen staan i.p.v de arc maken.
+
+Particles Layer
 
 ### Dag 6
 #### Donderdag 23.04.26

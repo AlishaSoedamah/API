@@ -1,0 +1,46 @@
+---
+const { flight } = Astro.params;
+
+let main = "https://opensky-network.org/api/states/all?";
+let icao = "icao24=3455d9";
+let url = main + icao;
+
+const response = await fetch(url);
+const flightInfo = await response.json();
+---
+<link rel="stylesheet" href="../../styles/global.css">
+
+<h1>Flight {flightInfo.states[0][1]}</h1>
+<h2>From {flightInfo.states[0][2]}</h2>
+<ul>
+	<li>icao24 {flightInfo.states[0][0]}</li>
+	<li>callsign {flightInfo.states[0][1]}</li>
+	<li>origin country {flightInfo.states[0][2]}</li>
+	<li>time position {flightInfo.states[0][3]}</li>
+	<li>last contact {flightInfo.states[0][4]}</li>
+	<li>longitude {flightInfo.states[0][5]}</li>
+	<li>latitude {flightInfo.states[0][6]}</li>
+	<li>baro altitude {flightInfo.states[0][7]}</li>
+	<li>on ground {flightInfo.states[0][8]}</li>
+	<li>velocity {flightInfo.states[0][9]}</li>
+	<li>true track {flightInfo.states[0][10]}</li>
+	<li>vertical rate {flightInfo.states[0][11]}</li>
+	<li>sensors {flightInfo.states[0][12]}</li>
+	<li>geo altitude {flightInfo.states[0][13]}</li>
+	<li>squawk {flightInfo.states[0][14]}</li>
+	<li>spi {flightInfo.states[0][15]}</li>
+	<li>position source {flightInfo.states[0][16]}</li>
+	<li>category {flightInfo.states[0][17]}</li>
+</ul>
+
+<style>
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	li {
+		margin: 10px 0;
+	}
+</style>

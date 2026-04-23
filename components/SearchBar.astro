@@ -4,28 +4,60 @@ const {flightInfo} = Astro.props;
 ---
 
 <aside>
-	<label for="search-bar">Search a flight</label>
-	<input type="search" id="search-bar">
-	<button>Search</button>
-	<p>Total Aircraft: 6259</p>
-	{ flightInfo.states.map(state => {
-		const [route, place, title, pos, lastcontact, long, lat] = state;
-		return (
-			<Card title={title} place={place} route={route} longitude={long} latitude={lat} />
-		)
-	})}
+	<div id="search">
+		<label for="search-bar">Search a flight
+		</label>
+		<input type="search" id="search-bar">
+	</div>
+	<div id="flight-list">
+		{ flightInfo.states.map(state => {
+			const [route, place, title, pos, lastcontact, long, lat] = state;
+			return (
+			<div class="flight-card" data-title={title}>
+				<Card title={title} place={place} route={route} longitude={long} latitude={lat} />
+			</div>
+			)
+		})}
+	</div>
 </aside>
+
+<script>
+  const searchBar = document.getElementById('search-bar') as HTMLInputElement;
+  const flightList = document.getElementById('flight-list');
+
+  function filterFlights() {
+    const query = searchBar.value.toLowerCase().trim();
+    const cards = flightList?.querySelectorAll('[data-title]');
+
+    cards?.forEach(card => {
+      const title = card.getAttribute('data-title')?.toLowerCase() ?? '';
+
+      const matches = title.includes(query);
+      (card as HTMLElement).style.display = matches ? '' : 'none';
+    });
+  }
+  searchBar?.addEventListener('input', filterFlights);
+  searchBar?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') filterFlights();
+  });
+</script>
 
 <style>
 	aside {
 		outline: 1px solid var(--lines);
 		width: 30%;
+		overflow: scroll;
 		height: 100vh;
 	}
 
+	label {
+		padding: 30px 25px 20px 25px;
+	}
+
 	input {
+		width: 275px;
 		padding: 10px;
-		margin: 25px;
+		margin: 0 25px;
 		background: transparent;
 		border: none;
 		outline: 1px solid var(--lines);
@@ -44,5 +76,10 @@ const {flightInfo} = Astro.props;
 		cursor: pointer;
 		background: white;
 		color: black;
+	}
+
+	#search {
+		display: flex;
+		flex-direction: column;
 	}
 </style>

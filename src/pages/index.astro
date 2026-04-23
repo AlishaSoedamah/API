@@ -37,5 +37,24 @@ flightInfo = await response.json();
 		<Header />
 		<SearchBar flightInfo={flightInfo}/>
 		<GlobeContainer />
+		<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+		<script define:vars={{flightInfo}} type="module">
+			// @ts-nocheck
+			const globe = Globe()
+			.globeImageUrl('./big.jpg')
+
+			globe
+			.pointsData(
+				flightInfo.states.map(state => ({
+				lat: state[6],
+				lng: state[5],
+				}))
+			)
+			.pointColor(() => 'rgb(255, 255, 255)')
+			.pointAltitude(10)
+			.pointRadius(0.02);
+			
+			globe(document.getElementById('globeViz'));
+		</script>
 	</body>
 </html>

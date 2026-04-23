@@ -2,13 +2,13 @@
 const {title, place, route, latitude, longitude} = Astro.props;
 ---
 
+<a href={`/${title}`}>
 <div>
-	<h4>Origin Country: {title}</h4>
-	<p>Callsign: {place}</p>
-	<span>{route}</span>
-	<p>lan {longitude}</p>
-	<p>lat {latitude}</p>
-</div>
+		<h4>Origin Country: {title}</h4>
+		<p>Callsign: {place}</p>
+		<span>{route}</span>
+	</div>
+</a>
 
 <style>
 	:root {
@@ -25,17 +25,12 @@ const {title, place, route, latitude, longitude} = Astro.props;
 		margin: 25px;
 	}
 
-	span {
-		display: relative;
+	div:hover {
+		cursor: pointer;
 	}
 
-	span::after {
-		position: absolute;
-		content: "";
-		margin: 0 10px;
-		width: 10px;
-		aspect-ratio: 1;
-		background-color: rgb(47, 255, 54);
-		border-radius: 10px;
+	a {
+		color: white;
+		text-decoration: none;
 	}
 </style>

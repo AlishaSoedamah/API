@@ -2,21 +2,21 @@
 const { flight } = Astro.params;
 import staticData from "./../all.json" assert { type: "json" };
 let flightInfo = undefined;
-let onrender = import.meta.env.ONRENDER;
+// let onrender = import.meta.env.ONRENDER;
 
-if (onrender)
-{
+// if (onrender)
+// {
 	flightInfo = staticData;
-}
-else {
-	let main = "https://opensky-network.org/api/states/all?";
-	let icao = "icao24=3455d9";
-	let url = main + icao;
-	const response = await fetch(url);
-	flightInfo = await response.json();
-}
+// }
+// else {
+// 	let main = "https://opensky-network.org/api/states/all?";
+// 	let icao = "icao24=3455d9";
+// 	let url = main + icao;
+// 	const response = await fetch(url);
+// 	flightInfo = await response.json();
+// }
 ---
-<link rel="stylesheet" href="../../styles/global.css">
+<link rel="stylesheet" href="/global.css">
 
 <h1>Flight {flightInfo.states[0][1]}</h1>
 <h2>From {flightInfo.states[0][2]}</h2>

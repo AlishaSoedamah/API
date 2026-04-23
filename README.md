@@ -161,6 +161,13 @@ Nu met een normale texture ziet het er saai uit
 # Week 4
 ### Dag 5
 #### Woensdag 22.04.26
+
+Arcs of puntjes?
+<img src="readme/latlng.png">
+<img src="readme/arc.png">
+<img src="readme/arc2.png">
+<img src="readme/arc3.png">
+<img src="readme/readme_flights.png">
 **wat heb ik gedaan?**
 Geprobeerd de website live te zetten met Render en Netlify alleen lukte dit niet omdat de API een ```Timeout Error``` gaf op beide :( 
 Blijkbaar blokeerd Opensky iets waardoor het live zetten steeds niet lukt.
@@ -190,10 +197,12 @@ Nog meer problemen: Opensky gebruikt alleen de longitude and latitude van waar h
 start/eind punten. 
 Ik ga nu visualiseren waar de vliegtuigen staan i.p.v de arc maken.
 
-Particles Layer
+Particles Layer?
+![Video 3d globe](readme/vid.gif)
 
 ### Dag 6
 #### Donderdag 23.04.26
+
 
 ### Voortgang week 4
 <details>

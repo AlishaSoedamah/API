@@ -9,15 +9,15 @@ let flightInfo = undefined;
 let onrender = import.meta.env.ONRENDER;
 
 
-if (onrender)
+if (true)
 {
 	flightInfo = staticData;
 }
-else {
-	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-	const response = await fetch(url);
-flightInfo = await response.json();
-}
+// else {
+// 	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+// 	const response = await fetch(url);
+// flightInfo = await response.json();
+// }
 
 
 
@@ -30,7 +30,7 @@ flightInfo = await response.json();
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="../../styles/global.css">
+		<link rel="stylesheet" href="/global.css">
 		<title>🛩</title>
 	</head>
 	<body>

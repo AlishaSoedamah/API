@@ -1,8 +1,8 @@
 ---
-const {title, place, route, latitude, longitude} = Astro.props;
+const {icao24, title, place, route, latitude, longitude} = Astro.props;
 ---
 
-<a href={`/${title}`}>
+<a href={`/${route}`}>
 <div>
 		<h4>Origin Country: {title}</h4>
 		<p>Callsign: {place}</p>

@@ -39,8 +39,7 @@ let flightInfo = undefined;
 		<script define:vars={{flightInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
-			.globeImageUrl('./temp.png')
-			// .globeImageUrl('./big.jpg')
+			.globeImageUrl('./big.jpg')
 
 			globe
 			.pointsData(
@@ -51,7 +50,12 @@ let flightInfo = undefined;
 			)
 			.pointColor(() => 'rgb(255, 255, 255)')
 			.pointAltitude(10)
-			.pointRadius(0.02);
+			.pointRadius(0.02)
+			.onPointHover(point => {
+				if (point) {
+					console.log(point)
+				}
+			});
 			
 			globe(document.getElementById('globeViz'));
 		</script>

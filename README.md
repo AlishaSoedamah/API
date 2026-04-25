@@ -227,11 +227,18 @@ else {
 <details>
 <summary> Vrijdag 24.04.26 </summary>
 Wat we hebben besproken:
+
 - Doe meer met de detail pagina -> hoogte van vliegtuigen laten zien
 - Meer lievde voor de UI
 - globe.gl gebruiken mag
 - labels toevoegen aan de punten op de 3d globe
 - Filter opties toevoegen
 - Op de detail pagina mag de 3d wereld terug komen
+
+Todos voor de deadline (8 mei)
+- [ ] zoek filters
+- [ ] detail pagina betere styling 
+- [ ] visuals van de wereld
+- [ ] misschien een extra animatie voor waar het vliegtuig staat op detail pagina
 
 </details>

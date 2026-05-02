@@ -3,10 +3,23 @@ const {icao24, title, place, route, latitude, longitude} = Astro.props;
 ---
 
 <a href={`/${route}`}>
-<div>
-		<h4>Origin Country: {title}</h4>
-		<p>Callsign: {place}</p>
-		<span>{route}</span>
+	<div>
+		<p>Origin Country</p>
+		<h3>{title}</h3>
+		<dl class="meta">
+			<dd class="box">
+				<dl>
+					<dt>Unique ICAO</dt>
+					<dd class="border">{route}</dd>
+				</dl>
+			</dd>
+			<dd class="box">
+				<dl>
+					<dt>Callsign</dt>
+					<dd>{place}</dd>
+				</dl>
+			</dd>
+		</dl>
 	</div>
 </a>
 
@@ -32,5 +45,36 @@ const {icao24, title, place, route, latitude, longitude} = Astro.props;
 	a {
 		color: white;
 		text-decoration: none;
+	}
+
+	dd {
+		width: 150px;
+	}
+
+	dt {
+		margin: 7px 0;
+		font-weight: 900;
+	}
+
+	.meta {
+		display: flex;
+		text-align: left;
+		padding: 10px 0;
+	}
+
+	.border
+	{
+		position: relative;
+		z-index: -1;
+		&::after
+		{
+			content: "";
+			position: absolute;
+			bottom: -5px;
+			width: 1px;
+			height: 50px;
+			margin: 0 65px;
+			background: var(--lines);
+		}
 	}
 </style>

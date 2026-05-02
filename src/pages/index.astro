@@ -2,20 +2,21 @@
 import Header from "../../components/Header.astro"
 import SearchBar from "../../components/SearchBar.astro"
 import GlobeContainer from "../../components/GlobeContainer.astro"
+import Footer from "../../components/Footer.astro"
 import staticData from "./../all.json" assert { type: "json" };
 
 let flightInfo = undefined;
-// let onrender = import.meta.env.ONRENDER;
+let onrender = import.meta.env.ONRENDER;
 
-// if (onrender)
-// {
+if (onrender)
+{
 	flightInfo = staticData;
-// }
-// else {
-// 	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-// 	const response = await fetch(url);
-// 	flightInfo = await response.json();
-// }
+}
+else {
+	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+	const response = await fetch(url);
+	flightInfo = await response.json();
+}
 
 // console.log(flightInfo.states[0][0]);
 
@@ -39,25 +40,54 @@ let flightInfo = undefined;
 		<script define:vars={{flightInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
-			.globeImageUrl('./big.jpg')
-
+			.globeImageUrl('./earthmap1k.jpg');
+	
 			globe
-			.pointsData(
-				flightInfo.states.map(state => ({
-				lat: state[6],
-				lng: state[5],
+			.width(910)
+  			.height(800)
+			.hexBinPointsData(
+				flightInfo.states
+				.filter(s => s[5] != null && s[6] != null)
+				.map(state => ({
+					lat: state[6],
+					lng: state[5],
 				}))
 			)
-			.pointColor(() => 'rgb(255, 255, 255)')
-			.pointAltitude(0.5)
-			.pointRadius(0.02)
-			.onPointHover(point => {
-				if (point) {
-					console.log(point)
+			.hexBinPointLat('lat')
+			.hexBinPointLng('lng')
+			.hexBinResolution(6)
+			.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
+			.hexTopColor(({ sumWeight }) => {
+				if (sumWeight > 20) return 'rgb(255, 50, 50)';   // red - very busy
+				if (sumWeight > 10) return 'rgb(255, 165, 0)';   // orange - busy
+				if (sumWeight > 5)  return 'rgb(255, 255, 0)';   // yellow - moderate
+				return 'rgb(255, 255, 255)';                      // white - quiet
+				})
+			.hexSideColor(({ sumWeight }) => {
+				if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
+				if (sumWeight > 10) return 'rgba(255, 165, 0, 1)';
+				if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
+				return 'rgba(255, 255, 255, 1)';
+				})
+			.hexLabel(({ points, sumWeight, center }) => `
+				<div class="flight-tooltip">
+				<b>Flights: ${sumWeight}</b><br/>
+				Lat: ${center.lat.toFixed(2)}, Lng: ${center.lng.toFixed(2)}
+				</div>
+			`)
+			globe
+			.particlesData([
+				{
+				particles: flightInfo.states
+					.filter(s => s[5] != null && s[6] != null)
+					.map(state => ({
+					lat: state[6],
+					lng: state[5],
+					}))
 				}
-			});
-			
+			])
 			globe(document.getElementById('globeViz'));
-		</script>
+	</script>
+	<Footer />
 	</body>
 </html>

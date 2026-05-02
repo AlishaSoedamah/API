@@ -3,23 +3,31 @@ import Card from "./Card.astro";
 const {flightInfo} = Astro.props;
 ---
 
-<aside>
-	<div id="search">
-		<label for="search-bar">Search a flight
-		</label>
-		<input type="search" id="search-bar">
-	</div>
-	<div id="flight-list">
-		{ flightInfo.states.map(state => {
-			const [route, place, title, pos, lastcontact, long, lat] = state;
-			return (
-			<div class="flight-card" data-title={title}>
-				<Card title={title} place={place} route={route} longitude={long} latitude={lat} />
+<section>
+	<aside>
+		<div id="search">
+			<label for="search-bar">Search a flight
+			</label>
+			<input type="search" id="search-bar">
+			<div class="filters">
+				<p>Filters</p>
+				<button>private</button>
+				<button>all</button>
+				<button>Netherlands</button>
 			</div>
-			)
-		})}
-	</div>
-</aside>
+		</div>
+		<div id="flight-list">
+			{ flightInfo.states.map(state => {
+				const [route, place, title, pos, lastcontact, long, lat] = state;
+				return (
+				<div class="flight-card" data-title={title}>
+					<Card title={title} place={place} route={route} longitude={long} latitude={lat} />
+				</div>
+				)
+			})}
+		</div>
+	</aside>
+</section>
 
 <script>
   const searchBar = document.getElementById('search-bar') as HTMLInputElement;
@@ -48,6 +56,13 @@ const {flightInfo} = Astro.props;
 		width: 30%;
 		overflow: scroll;
 		height: 100vh;
+		position: absolute;
+		left: 50px;
+	}
+
+	section {
+		outline: 1px solid var(--lines);
+		position: relative;
 	}
 
 	label {
@@ -70,6 +85,8 @@ const {flightInfo} = Astro.props;
 		outline: 1px solid var(--lines);
 		border: none;
 		padding: 10px;
+		width: 100px;
+		margin: 10px 10px 0 0;
 	}
 
 	button:hover {
@@ -79,7 +96,23 @@ const {flightInfo} = Astro.props;
 	}
 
 	#search {
+		position: sticky;
+		top: 0;
 		display: flex;
 		flex-direction: column;
+		background-color: var(--bg-clr);
+		border-bottom: 1px solid var(--lines);
+	}
+
+	#flight-list
+	{
+		padding: 10px 0;
+	}
+
+	.filters {
+		margin: 25px;
+		p {
+			margin: 5px 0;
+		}
 	}
 </style>

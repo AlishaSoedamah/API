@@ -236,9 +236,13 @@ Wat we hebben besproken:
 - Op de detail pagina mag de 3d wereld terug komen
 
 Todos voor de deadline (8 mei)
+- [x] finesse de stijl van de website 
 - [ ] zoek filters
 - [ ] detail pagina betere styling 
 - [ ] visuals van de wereld
 - [ ] misschien een extra animatie voor waar het vliegtuig staat op detail pagina
+- [ ] theme switch voor de texture van de wereldbol
 
 </details>
+
+[scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)

@@ -9,11 +9,11 @@ const month = date.getMonth();
 ---
 
 <header>
-	<h1>Flights</h1>
 	<div>
 		<h2>{dayArr[day]}</h2>
 		<span>{dayNum} {monthArr[month]}</span>
 	</div>
+	<h1>Flights</h1>
 </header>
 
 <style>
@@ -21,11 +21,12 @@ const month = date.getMonth();
 		background-color: black;
 		display: flex;
 		justify-content: space-between;
-		border-bottom: 1px solid rgb(118, 118, 118);
+		align-items: center;
+		margin: 20px;
 	}
 
 	h1 {
-		margin: 10px 25px;
+		margin: 0 25px;
 	}
 
 	h2, span {

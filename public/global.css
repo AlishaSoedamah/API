@@ -5,7 +5,7 @@
 
 @font-face {
 	font-family: "worldstar";
-	src: url(Worldstar.ttf);
+	src: url("Worldstar.ttf");
 }
 
 * {
@@ -22,6 +22,7 @@ body {
 
 h1, h2, h3 {
 	font-family: "worldstar", Arial, Helvetica, sans-serif;
+	font-weight: 100;
 }
 
 h1 {

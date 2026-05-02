@@ -18,45 +18,42 @@ let flightInfo = undefined;
 ---
 <link rel="stylesheet" href="/global.css">
 
-<h1>Flight {flight}</h1>
-<h2>Origin country {flightState[2]}</h2>
-<ul>
-	<li>icao24 {flightState[0]}</li>
-	<li>callsign {flightState[1]}</li>
-	<li>time position {flightState[3]}</li>
-	<li>last contact {flightState[4]}</li>
-	<li>longitude {flightState[5]}</li>
-	<li>latitude {flightState[6]}</li>
-	<li>baro altitude {flightState[7]}</li>
-	<li>on ground {flightState[8]}</li>
-	<li>velocity {flightState[9]}</li>
-	<li>true track {flightState[10]}</li>
-	<li>vertical rate {flightState[11]}</li>
-	<li>sensors {flightState[12]}</li>
-	<li>geo altitude {flightState[13]}</li>
-	<li>squawk {flightState[14]}</li>
-	<li>spi {flightState[15]}</li>
-	<li>position source {flightState[16]}</li>
-	<li>category {flightState[17]}</li>
-</ul>
+<section>
+	<h1>Flight {flight}</h1>
+	<h2>Origin country {flightState[2]}</h2>
+	<ul>
+		<li>icao24 {flightState[0]}</li>
+		<li>callsign {flightState[1]}</li>
+		<li>time position {flightState[3]}</li>
+		<li>last contact {flightState[4]}</li>
+		<li>longitude {flightState[5]}</li>
+		<li>latitude {flightState[6]}</li>
+		<li>baro altitude {flightState[7]}</li>
+		<li>on ground {flightState[8]}</li>
+		<li>velocity {flightState[9]}</li>
+		<li>true track {flightState[10]}</li>
+		<li>vertical rate {flightState[11]}</li>
+		<li>sensors {flightState[12]}</li>
+		<li>geo altitude {flightState[13]}</li>
+		<li>squawk {flightState[14]}</li>
+		<li>spi {flightState[15]}</li>
+		<li>position source {flightState[16]}</li>
+		<li>category {flightState[17]}</li>
+	</ul>
+</section>
 
 <style>
+	section
+	{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
 	ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
-	}
-
-	/* li {
-		margin: 10px 0;
-	} */
-
-	li:nth-child(1)
-	{
-		background-color: red;
-	}
-	li:nth-child(2)
-	{
-		background-color: orangered;
 	}
 </style>

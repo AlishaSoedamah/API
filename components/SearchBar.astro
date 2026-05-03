@@ -9,11 +9,19 @@ const {flightInfo} = Astro.props;
 			<label for="search-bar">Search a flight
 			</label>
 			<input type="search" id="search-bar">
-			<div class="filters">
-				<p>Filters</p>
-				<button>private</button>
-				<button>all</button>
-				<button>Netherlands</button>
+			<p class="filter-txt">Filters</p>
+			<div class="filter-container">
+				<div class="filters">
+					<button>private</button>
+					<button>all</button>
+					<button>Asia</button>
+					<button>Africa</button>
+					<button>North America</button>
+					<button>South America</button>
+					<button>Europe</button>
+					<button>Antarctica</button>
+					<button>Australia</button>
+				</div>
 			</div>
 		</div>
 		<div id="flight-list">
@@ -85,7 +93,7 @@ const {flightInfo} = Astro.props;
 		outline: 1px solid var(--lines);
 		border: none;
 		padding: 10px;
-		width: 100px;
+		/* width: 100px; */
 		margin: 10px 10px 0 0;
 	}
 
@@ -96,8 +104,6 @@ const {flightInfo} = Astro.props;
 	}
 
 	#search {
-		position: sticky;
-		top: 0;
 		display: flex;
 		flex-direction: column;
 		background-color: var(--bg-clr);
@@ -109,10 +115,16 @@ const {flightInfo} = Astro.props;
 		padding: 10px 0;
 	}
 
+	.filter-container {
+		overflow-y: scroll;
+	}
+
 	.filters {
-		margin: 25px;
-		p {
-			margin: 5px 0;
-		}
+		margin: 10px 25px;
+		width: 800px;
+	}
+
+	.filter-txt {
+		margin: 25px 5px 0 25px;
 	}
 </style>

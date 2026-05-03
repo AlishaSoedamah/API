@@ -237,7 +237,7 @@ Wat we hebben besproken:
 
 Todos voor de deadline (8 mei)
 - [x] finesse de stijl van de website 
-- [ ] zoek filters
+- [x] zoek filters
 - [ ] detail pagina betere styling 
 - [ ] visuals van de wereld
 - [ ] misschien een extra animatie voor waar het vliegtuig staat op detail pagina

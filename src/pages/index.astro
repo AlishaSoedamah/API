@@ -2,23 +2,26 @@
 import Header from "../../components/Header.astro"
 import SearchBar from "../../components/SearchBar.astro"
 import GlobeContainer from "../../components/GlobeContainer.astro"
-import Footer from "../../components/Footer.astro"
 import staticData from "./../all.json" assert { type: "json" };
+import staticDataEurope from "./../europe.json" assert { type: "json" };
+import staticDataAsia from "./../asia.json" assert { type: "json" };
+import staticDataAfrica from "./../africa.json" assert { type: "json" };
 
 let flightInfo = undefined;
+const europeInfo = staticDataEurope;
+const asiaInfo = staticDataAsia;
+const africaInfo = staticDataAfrica;
 let onrender = import.meta.env.ONRENDER;
 
-if (onrender)
-{
+// if (onrender)
+// {
 	flightInfo = staticData;
-}
-else {
-	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-	const response = await fetch(url);
-	flightInfo = await response.json();
-}
-
-// console.log(flightInfo.states[0][0]);
+// }
+// else {
+// 	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+// 	const response = await fetch(url);
+// 	flightInfo = await response.json();
+// }
 
 ---
 
@@ -37,46 +40,57 @@ else {
 		<SearchBar flightInfo={flightInfo}/>
 		<GlobeContainer />
 		<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-		<script define:vars={{flightInfo}} type="module">
+		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
 			.globeImageUrl('./earthmap1k.jpg');
 	
-			globe
-			.width(910)
-  			.height(800)
-			.hexBinPointsData(
-				flightInfo.states
-				.filter(s => s[5] != null && s[6] != null)
-				.map(state => ({
+			function updateGlobe(data) {
+				const points = data.states
+					.filter(s =>
+						s[5] != null && s[6] != null &&
+						!isNaN(Number(s[5])) && !isNaN(Number(s[6])) &&
+						isFinite(Number(s[5])) && isFinite(Number(s[6]))
+					)
+					.map(state => ({
 					lat: state[6],
 					lng: state[5],
-				}))
-			)
-			.hexBinPointLat('lat')
-			.hexBinPointLng('lng')
-			.hexBinResolution(6)
-			.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
-			.hexTopColor(({ sumWeight }) => {
-				if (sumWeight > 20) return 'rgb(255, 50, 50)';
-				if (sumWeight > 10) return 'rgb(255, 165, 0)';
-				if (sumWeight > 5)  return 'rgb(255, 255, 0)';
-				return 'rgb(255, 255, 255)';
-				})
-			.hexSideColor(({ sumWeight }) => {
-				if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
-				if (sumWeight > 10) return 'rgba(255, 165, 0, 1)';
-				if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
-				return 'rgba(255, 255, 255, 1)';
-				})
-			.hexLabel(({ points, sumWeight, center }) => `
-				<div class="flight-tooltip">
-				<b>Flights: ${sumWeight}</b><br/>
-				Lat: ${center.lat.toFixed(2)}, Lng: ${center.lng.toFixed(2)}
-				</div>
-			`);
+					}));
+
+				globe
+					.hexBinPointsData(points)
+					.hexBinPointLat('lat')
+					.hexBinPointLng('lng')
+					.hexBinResolution(6)
+					.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
+					.hexTopColor(({ sumWeight }) => {
+					if (sumWeight > 20) return 'rgb(255, 50, 50)';
+					if (sumWeight > 10) return 'rgb(255, 165, 0)';
+					if (sumWeight > 5)  return 'rgb(255, 255, 0)';
+					return 'rgb(255, 255, 255)';
+					})
+					.hexSideColor(({ sumWeight }) => {
+					if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
+					if (sumWeight > 10) return 'rgba(255, 165, 0, 1)';
+					if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
+					return 'rgba(255, 255, 255, 1)';
+					})
+					.arcsData(points)
+				}
+				updateGlobe(flightInfo);
+
+			document.getElementById('allBtn')
+				.addEventListener('click', () => updateGlobe(flightInfo));
+
+			document.getElementById('asiaBtn')
+				.addEventListener('click', () => updateGlobe(asiaInfo));
+
+			document.getElementById('europeBtn')
+				.addEventListener('click', () => updateGlobe(europeInfo));
+			
+			document.getElementById('africaBtn')
+				.addEventListener('click', () => updateGlobe(africaInfo));
 			globe(document.getElementById('globeViz'));
 	</script>
-	<!-- <Footer /> -->
 	</body>
 </html>

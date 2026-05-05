@@ -16,10 +16,9 @@ const {flightInfo} = Astro.props;
 					<button id="allBtn">all</button>
 					<button id="asiaBtn">Asia</button>
 					<button id="europeBtn">Europe</button>
-					<button>Africa</button>
+					<button id="africaBtn">Africa</button>
 					<button>North America</button>
 					<button>South America</button>
-					<button>Antarctica</button>
 					<button>Australia</button>
 				</div>
 			</div>
@@ -56,11 +55,6 @@ const {flightInfo} = Astro.props;
   searchBar?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') filterFlights();
   });
-
-//   document.getElementById("allBtn").addEventListener("click", () => fetchFlights("all"));
-//   document.getElementById("europeBtn").addEventListener("click", () => fetchFlights("europe"));
-//   document.getElementById("asiaBtn").addEventListener("click", () => fetchFlights("asia"));
-
 </script>
 
 <style>

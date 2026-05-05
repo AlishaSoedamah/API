@@ -241,8 +241,13 @@ Todos voor de deadline (8 mei)
 - [ ] detail pagina betere styling 
 - [ ] visuals van de wereld
 - [ ] misschien een extra animatie voor waar het vliegtuig staat op detail pagina
-- [ ] theme switch voor de texture van de wereldbol
+
+~~ theme switch voor de texture van de wereldbol~~
 
 </details>
+
+#### 06.05.26
+Laatste dingen gedaan/styling op de site
+
 
 [scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)

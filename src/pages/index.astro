@@ -58,10 +58,10 @@ else {
 			.hexBinResolution(6)
 			.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
 			.hexTopColor(({ sumWeight }) => {
-				if (sumWeight > 20) return 'rgb(255, 50, 50)';   // red - very busy
-				if (sumWeight > 10) return 'rgb(255, 165, 0)';   // orange - busy
-				if (sumWeight > 5)  return 'rgb(255, 255, 0)';   // yellow - moderate
-				return 'rgb(255, 255, 255)';                      // white - quiet
+				if (sumWeight > 20) return 'rgb(255, 50, 50)';
+				if (sumWeight > 10) return 'rgb(255, 165, 0)';
+				if (sumWeight > 5)  return 'rgb(255, 255, 0)';
+				return 'rgb(255, 255, 255)';
 				})
 			.hexSideColor(({ sumWeight }) => {
 				if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
@@ -74,18 +74,7 @@ else {
 				<b>Flights: ${sumWeight}</b><br/>
 				Lat: ${center.lat.toFixed(2)}, Lng: ${center.lng.toFixed(2)}
 				</div>
-			`)
-			globe
-			.particlesData([
-				{
-				particles: flightInfo.states
-					.filter(s => s[5] != null && s[6] != null)
-					.map(state => ({
-					lat: state[6],
-					lng: state[5],
-					}))
-				}
-			])
+			`);
 			globe(document.getElementById('globeViz'));
 	</script>
 	<!-- <Footer /> -->

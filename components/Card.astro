@@ -1,5 +1,5 @@
 ---
-const {icao24, title, place, route, latitude, longitude} = Astro.props;
+const {title, place, route} = Astro.props;
 ---
 
 <a href={`/${route}`}>
@@ -42,6 +42,7 @@ const {icao24, title, place, route, latitude, longitude} = Astro.props;
 		cursor: pointer;
 	}
 
+
 	a {
 		color: white;
 		text-decoration: none;
@@ -70,9 +71,9 @@ const {icao24, title, place, route, latitude, longitude} = Astro.props;
 		{
 			content: "";
 			position: absolute;
-			bottom: 0;
+			bottom: 5px;
 			width: 1px;
-			height: 40px;
+			height: 30px;
 			margin: 0 65px;
 			background: var(--lines);
 		}

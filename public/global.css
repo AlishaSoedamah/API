@@ -1,5 +1,5 @@
 :root {
-	--bg-clr: black;
+	--bg-clr: rgb(0, 0, 0);
 	--text-clr: white;
 }
 
@@ -40,4 +40,10 @@ span {
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+
+@media (max-width: 800px) {
+	#globeViz {
+		display: none;
+	}
 }

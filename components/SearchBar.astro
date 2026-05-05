@@ -1,6 +1,7 @@
 ---
 import Card from "./Card.astro";
 const {flightInfo} = Astro.props;
+
 ---
 
 <section>
@@ -12,13 +13,12 @@ const {flightInfo} = Astro.props;
 			<p class="filter-txt">Filters</p>
 			<div class="filter-container">
 				<div class="filters">
-					<button>private</button>
-					<button>all</button>
-					<button>Asia</button>
+					<button id="allBtn">all</button>
+					<button id="asiaBtn">Asia</button>
+					<button id="europeBtn">Europe</button>
 					<button>Africa</button>
 					<button>North America</button>
 					<button>South America</button>
-					<button>Europe</button>
 					<button>Antarctica</button>
 					<button>Australia</button>
 				</div>
@@ -56,12 +56,17 @@ const {flightInfo} = Astro.props;
   searchBar?.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') filterFlights();
   });
+
+//   document.getElementById("allBtn").addEventListener("click", () => fetchFlights("all"));
+//   document.getElementById("europeBtn").addEventListener("click", () => fetchFlights("europe"));
+//   document.getElementById("asiaBtn").addEventListener("click", () => fetchFlights("asia"));
+
 </script>
 
 <style>
 	aside {
 		outline: 1px solid var(--lines);
-		width: 30%;
+		width: 100%;
 		overflow: scroll;
 		height: 100vh;
 		position: absolute;
@@ -126,5 +131,11 @@ const {flightInfo} = Astro.props;
 
 	.filter-txt {
 		margin: 25px 5px 0 25px;
+	}
+
+	@media (min-width: 800px) {
+		aside {
+			width: 30%;
+		}
 	}
 </style>

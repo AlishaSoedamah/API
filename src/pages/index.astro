@@ -6,22 +6,28 @@ import staticData from "./../all.json" assert { type: "json" };
 import staticDataEurope from "./../europe.json" assert { type: "json" };
 import staticDataAsia from "./../asia.json" assert { type: "json" };
 import staticDataAfrica from "./../africa.json" assert { type: "json" };
+import staticNAmerica from "./../northAmerica.json" assert { type: "json" };
+import staticSAmerica from "./../southAmerica.json" assert { type: "json" };
+import staticDataAus from "./../australia.json" assert { type: "json" };
 
 let flightInfo = undefined;
 const europeInfo = staticDataEurope;
 const asiaInfo = staticDataAsia;
 const africaInfo = staticDataAfrica;
+const northAmericaInfo = staticNAmerica;
+const southAmericaInfo = staticSAmerica;
+const ausInfo = staticDataAus;
 let onrender = import.meta.env.ONRENDER;
 
-// if (onrender)
-// {
+if (onrender)
+{
 	flightInfo = staticData;
-// }
-// else {
-// 	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-// 	const response = await fetch(url);
-// 	flightInfo = await response.json();
-// }
+}
+else {
+	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
+	const response = await fetch(url);
+	flightInfo = await response.json();
+}
 
 ---
 
@@ -40,7 +46,7 @@ let onrender = import.meta.env.ONRENDER;
 		<SearchBar flightInfo={flightInfo}/>
 		<GlobeContainer />
 		<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo}} type="module">
+		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo, northAmericaInfo, southAmericaInfo, ausInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
 			.globeImageUrl('./earthmap1k.jpg');
@@ -79,18 +85,21 @@ let onrender = import.meta.env.ONRENDER;
 				}
 				updateGlobe(flightInfo);
 
-			document.getElementById('allBtn')
-				.addEventListener('click', () => updateGlobe(flightInfo));
-
-			document.getElementById('asiaBtn')
-				.addEventListener('click', () => updateGlobe(asiaInfo));
-
-			document.getElementById('europeBtn')
-				.addEventListener('click', () => updateGlobe(europeInfo));
-			
-			document.getElementById('africaBtn')
-				.addEventListener('click', () => updateGlobe(africaInfo));
+			document.getElementById('allBtn').addEventListener('click', () => updateGlobe(flightInfo));
+			document.getElementById('asiaBtn').addEventListener('click', () => updateGlobe(asiaInfo));
+			document.getElementById('europeBtn').addEventListener('click', () => updateGlobe(europeInfo));
+			document.getElementById('africaBtn').addEventListener('click', () => updateGlobe(africaInfo));
+			document.getElementById('nAmericaBtn').addEventListener('click', () => updateGlobe(northAmericaInfo));
+			document.getElementById('sAmericaBtn').addEventListener('click', () => updateGlobe(southAmericaInfo));
+			document.getElementById('ausBtn').addEventListener('click', () => updateGlobe(ausInfo));
 			globe(document.getElementById('globeViz'));
+
+			// Suppress known globe.gl internal NaN warning
+			const _error = console.error.bind(console);
+			console.error = (...args) => {
+			if (typeof args[0] === 'string' && args[0].includes('computeBoundingSphere')) return;
+			_error(...args);
+			};
 	</script>
 	</body>
 </html>

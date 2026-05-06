@@ -60,11 +60,13 @@ const {flightInfo} = Astro.props;
 <style>
 	aside {
 		outline: 1px solid var(--lines);
-		width: 100%;
 		overflow: scroll;
 		height: 100vh;
+		width: 100%;
 		position: absolute;
-		left: 50px;
+		z-index: 1000;
+		left: 0;
+		top: 500px;
 	}
 
 	section {
@@ -109,9 +111,9 @@ const {flightInfo} = Astro.props;
 		border-bottom: 1px solid var(--lines);
 	}
 
-	#flight-list
-	{
+	#flight-list {
 		padding: 10px 0;
+		background: var(--bg-clr);
 	}
 
 	.filter-container {
@@ -127,9 +129,13 @@ const {flightInfo} = Astro.props;
 		margin: 25px 5px 0 25px;
 	}
 
-	@media (min-width: 800px) {
+	@media (min-width: 900px) {
 		aside {
 			width: 30%;
+			left: 50px;
+			top: 0;
+			position: absolute;
 		}
+		
 	}
 </style>

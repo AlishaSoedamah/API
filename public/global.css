@@ -41,9 +41,3 @@ span {
     width: 0;
     background: transparent;
 }
-
-@media (max-width: 800px) {
-	#globeViz {
-		display: none;
-	}
-}

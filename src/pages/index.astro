@@ -19,15 +19,17 @@ const southAmericaInfo = staticSAmerica;
 const ausInfo = staticDataAus;
 let onrender = import.meta.env.ONRENDER;
 
-if (onrender)
-{
+// if (onrender)
+// {
 	flightInfo = staticData;
-}
-else {
-	const url = "https://opensky-network.org/api/states/all?lamin=45.8389&lomin=5.9962&lamax=47.8229&lomax=10.5226";
-	const response = await fetch(url);
-	flightInfo = await response.json();
-}
+// }
+// else {
+// 	const base = "https://opensky-network.org/api/states/all?";
+// 	const aus = "lamin=-43.6&lomin=113.2&lamax=-10.7&lomax=153.6";
+// 	const url = base + aus;
+// 	const response = await fetch(url);
+// 	flightInfo = await response.json();
+// }
 
 ---
 
@@ -49,7 +51,9 @@ else {
 		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo, northAmericaInfo, southAmericaInfo, ausInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
-			.globeImageUrl('./earthmap1k.jpg');
+			.globeImageUrl('./earthmap1k.jpg')
+			.width(905)
+  			.height(905);
 	
 			function updateGlobe(data) {
 				const points = data.states
@@ -64,23 +68,23 @@ else {
 					}));
 
 				globe
-					.hexBinPointsData(points)
-					.hexBinPointLat('lat')
-					.hexBinPointLng('lng')
-					.hexBinResolution(6)
-					.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
-					.hexTopColor(({ sumWeight }) => {
+				.hexBinPointsData(points)
+				.hexBinPointLat('lat')
+				.hexBinPointLng('lng')
+				.hexBinResolution(6)
+				.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
+				.hexTopColor(({ sumWeight }) => {
 					if (sumWeight > 20) return 'rgb(255, 50, 50)';
 					if (sumWeight > 10) return 'rgb(255, 165, 0)';
 					if (sumWeight > 5)  return 'rgb(255, 255, 0)';
 					return 'rgb(255, 255, 255)';
-					})
-					.hexSideColor(({ sumWeight }) => {
+				})
+				.hexSideColor(({ sumWeight }) => {
 					if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
 					if (sumWeight > 10) return 'rgba(255, 165, 0, 1)';
 					if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
 					return 'rgba(255, 255, 255, 1)';
-					})
+				})
 					.arcsData(points)
 				}
 				updateGlobe(flightInfo);

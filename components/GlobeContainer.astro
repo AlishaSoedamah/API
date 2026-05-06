@@ -9,9 +9,15 @@
 	}
 
 	#globeViz {
+		display: inline;
 		outline: 1px solid var(--lines);
-		position: absolute;
 		left: 480px;
-		top: 1px;
 	}
+
+	@media (min-width: 900px) {
+		#globeViz {
+			position: absolute;
+		}
+	}
+
 </style>

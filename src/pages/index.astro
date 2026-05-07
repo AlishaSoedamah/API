@@ -58,6 +58,8 @@ else {
 		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo, northAmericaInfo, southAmericaInfo, ausInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
+			.height(900)
+			.width(900)
 			.globeImageUrl('./big.jpg')
 			.backgroundColor('#141414');
 
@@ -76,19 +78,18 @@ else {
 				.hexBinPointsData(points)
 				.hexBinPointLat('lat')
 				.hexBinPointLng('lng')
-				.hexBinResolution(5)
 				.hexAltitude(({ sumWeight }) => sumWeight * 0.05)
 				.hexTopColor(({ sumWeight }) => {
-					if (sumWeight > 20) return 'rgb(255, 50, 50)';
-					if (sumWeight > 10) return 'rgb(255, 165, 0)';
-					if (sumWeight > 5)  return 'rgb(255, 255, 0)';
-					return 'rgb(255, 255, 255)';
+					if (sumWeight > 20) return 'rgb(9, 0, 255)';
+					if (sumWeight > 10) return 'rgb(0, 255, 34)';
+					if (sumWeight < 5)  return 'rgb(255, 0, 239)';
+					return 'rgb(255, 0, 239)';
 				})
 				.hexSideColor(({ sumWeight }) => {
-					if (sumWeight > 20) return 'rgba(255, 50, 50, 1)';
-					if (sumWeight > 10) return 'rgba(255, 165, 0, 1)';
-					if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
-					return 'rgba(255, 255, 255, 1)';
+					if (sumWeight > 20) return 'rgba(9, 0, 255, 1)';
+					if (sumWeight > 10) return 'rgba(0, 255, 34, 1)';
+					if (sumWeight < 5)  return 'rgba(255, 0, 239, 1)';
+					return 'rgb(255, 0, 239)';
 				})
 			}
 			updateGlobe(flightInfo);

@@ -10,6 +10,13 @@ const {flightInfo} = Astro.props;
 			<label for="search-bar">Search a flight
 			</label>
 			<input type="search" id="search-bar">
+			<div>
+				<p class="filter-txt">Amount</p>
+				<div class="gradient"></div>
+				<mark>0 </mark>
+				<mark>10</mark>
+				<mark>20 > </mark>
+			</div>
 			<p class="filter-txt">Filters</p>
 			<div class="filter-container">
 				<div class="filters">
@@ -88,13 +95,19 @@ const {flightInfo} = Astro.props;
 		color: white;
 	}
 
+	mark {
+		color: var(--lines);
+		background: transparent;
+		margin: 0 45px;
+		font-size: 14px;
+	}
+
 	button {
 		color: white;
 		background:  var(--bg-clr);
 		outline: 1px solid var(--lines);
 		border: none;
 		padding: 10px;
-		/* width: 100px; */
 		margin: 10px 10px 0 0;
 	}
 
@@ -127,6 +140,14 @@ const {flightInfo} = Astro.props;
 
 	.filter-txt {
 		margin: 25px 5px 0 25px;
+	}
+
+	.gradient {
+		background: #FF00EF;
+		background: linear-gradient(90deg,rgba(255, 0, 239, 1) 0%, rgba(0, 255, 34, 1) 50%, rgba(9, 0, 255, 1) 100%);
+		width: 275px;
+		height: 5px;
+		margin: 15px 25px;
 	}
 
 	@media (min-width: 900px) {

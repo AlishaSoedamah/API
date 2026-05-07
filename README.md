@@ -273,7 +273,8 @@ AI code
 Ik kijk terug op dit vak als 1 van de leukere dingen uit de minor. We mochten echt experiementeren met een framework in plaats van vanilla html, css en js. Ik vond dit erg fijn omdat dit is hoe ik de meeste code van andere websites zie die gebouwd zijn in react/laravel.
 Aan 1 kant vond ik dat erg fijn maar aan de andere kant erg irritant met files vinden als ik iets moest aanpassen. Ik vond het erg cool om te werken met een nieuwe technologie die ik nooit eerder heb gebruikt: THREE.js! Eigenlijk het werken met de library globe.gl (die THREE.js gebruikt)
 
-### Wat ging goed?
+#### Wat ging goed?
+De overal website maken!
 
 #### Wat kon beter/wat was moeilijk?
 Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik problemen met de API omdat die werd geblokeerd door onrender en netlify. Er zit een limit op opensky en waardoor ik steeds een timeout error kreeg van opensky. Nadat ik een halve dag met Jad naar deze error had gekeken waren er volgens hem nog 2 opties:
@@ -283,6 +284,10 @@ Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik probl
 Ik heb de tweede optie gekozen omdat ik toch wel dezelfde data wou gebruiken zonder een hele refactor te doen op de website. Omdat ik dit probleem pas door had in de
 laatste week waar ik ook echt nog aan de website kon werken vond ik dit een goede oplossing die ik nog wel kon redden met de deadline.
 
+Toen ik de
+<img src="readme/render.png">
+zag was ik erg blij.
+
 Ik had ook problemen met de styling die half niet werd geladen op mijn website. Door de global.css in de public folder te zetten en een import te doen op de index.astro was dit wel gelukt gelukkig.
 
 Ik ben niet helemaal blij met de styling van de 3d globe. Ik had niet een goede gratis texture van het internet kunnen plukken om de wereld er minder basic uit te laten zien.
@@ -291,6 +296,7 @@ De gratis textures die ik wel had gevonden waren lage kwaliteit en niet super mo
 <img src="readme/test2.png">
 <img src="readme/test3.png">
 <img src="readme/test4.png">
+
 
 ### Bronnen
 [scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)

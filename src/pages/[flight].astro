@@ -16,6 +16,7 @@ let onrender = import.meta.env.ONRENDER;
 // 	const response = await fetch(url);
 // 	flightInfo = await response.json();
 // }
+// console.log(flightState);
 ---
 
 <link rel="stylesheet" href="/global.css">
@@ -59,9 +60,9 @@ let onrender = import.meta.env.ONRENDER;
 			<li>callsign</li>
 			<li>{flightState[1]}</li>
 			<li>time position</li>
-			<li>{flightState[3]} seconds</li>
+			<li>{flightState[3]} sec</li>
 			<li>last contact</li>
-			<li>{flightState[4]} seconds</li>
+			<li>{flightState[4]} sec</li>
 			<li>longitude</li>
 			<li>{flightState[5]}</li>
 			<li>latitude</li>
@@ -88,10 +89,10 @@ let onrender = import.meta.env.ONRENDER;
 <section id="globe">
 </section>
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-<script define:vars={{flightInfo}} type="module">
+<script define:vars={{flightState}} type="module">
 		// @ts-nocheck
 		const globe = Globe()
-		.globeImageUrl('./earthmap1k.jpg');
+		.globeImageUrl('./big.jpg');
 
 		globe(document.getElementById('globe'));
 
@@ -99,7 +100,7 @@ let onrender = import.meta.env.ONRENDER;
 		.width(1800)
   		.height(1000)
 		.pointsData([
-        	{lat: flightInfo.states[6][5], lng: flightInfo.states[6][6], size: 300, color: 'white'},
+        	{lat: flightState[5], lng: flightState[6], size: 300, color: 'white'},
         ]);
 </script>
 

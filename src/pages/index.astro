@@ -90,8 +90,8 @@ else {
 					if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
 					return 'rgba(255, 255, 255, 1)';
 				})
-				.arcsData(points)
-				}
+				.arcsData(points);
+			}
 			updateGlobe(flightInfo);
 			document.getElementById('allBtn').addEventListener('click', () => updateGlobe(flightInfo));
 			document.getElementById('asiaBtn').addEventListener('click', () => updateGlobe(asiaInfo));

@@ -5,22 +5,22 @@ const flightState = staticData.states.find(s => s[0] === flight);
 let flightInfo = undefined;
 let onrender = import.meta.env.ONRENDER;
 
-// if (onrender)
-// {
+if (onrender)
+{
 	flightInfo = staticData;
-// }
-// else {
-// 	let main = "https://opensky-network.org/api/states/all?icao24=";
-// 	let icao = flight;
-// 	let url = main + icao;
-// 	const response = await fetch(url);
-// 	flightInfo = await response.json();
-// }
-// console.log(flightState);
+}
+else {
+	let main = "https://opensky-network.org/api/states/all?icao24=";
+	let icao = flight;
+	let url = main + icao;
+	const response = await fetch(url);
+	flightInfo = await response.json();
+}
+
 ---
 
 <link rel="stylesheet" href="/global.css">
-<label>Manual
+<label>Show manual
 	<input value="man" type="checkbox"></input>
 </label>
 <section id="man-dialog">
@@ -86,22 +86,21 @@ let onrender = import.meta.env.ONRENDER;
 		</ul>
 	</div>
 </section>
-<section id="globe">
+<section class="globe-container">
+	<main id="globe">
+	</main>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 <script define:vars={{flightState}} type="module">
 		// @ts-nocheck
-		const globe = Globe()
-		.globeImageUrl('./big.jpg');
-
-		globe(document.getElementById('globe'));
-
-        globe
+		const globe = new Globe(document.getElementById('globe'))
+		.globeImageUrl('./big.jpg')
 		.width(1800)
-  		.height(1000)
-		.pointsData([
-        	{lat: flightState[5], lng: flightState[6], size: 300, color: 'white'},
-        ]);
+		.height(800)
+		.pointsData([{ lat: flightState[5], lng: flightState[6], size: 0.2, color: '#54f542' }])
+		.pointAltitude(1)
+		.pointRadius(d => d.size)
+		.pointColor(d => d.color);
 </script>
 
 <style>
@@ -112,6 +111,13 @@ let onrender = import.meta.env.ONRENDER;
 
 	h2 {
 		padding: 10px;
+	}
+
+	label {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	section
@@ -161,11 +167,28 @@ let onrender = import.meta.env.ONRENDER;
 		padding: 5px;
 	}
 
+	input {
+		margin: 0 10px;
+	}
+
+	.globe-container {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	#man-dialog {
 		display: none;
 	}
 
+	#globe {
+		position: absolute;
+		top: 25px;
+	}
+
 	body:has([value="man"]:checked) #man-dialog {
 		display: flex;
+		padding: 25px;
 	}
 </style>

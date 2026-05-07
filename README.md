@@ -270,14 +270,20 @@ AI code
 ```
 
 ### Eind reflectie
-Ik kijk terug op dit vak als 1 van de leukere dingen uit de minor. We mochten echt experiementeren met een framework in plaats van vanilla html, css en js. Ik vond dit erg fijn omdat dit is hoe ik de meeste code van andere websites zie die gebouwd zijn in react/laravel.
-Aan 1 kant vond ik dat erg fijn maar aan de andere kant erg irritant met files vinden als ik iets moest aanpassen. Ik vond het erg cool om te werken met een nieuwe technologie die ik nooit eerder heb gebruikt: THREE.js! Eigenlijk het werken met de library globe.gl (die THREE.js gebruikt)
+Ik kijk terug op dit vak als 1 van de leukere maar uitdagende projecten uit de minor. We mochten echt experimenteren met een framework in plaats van vanilla html, css en js. Ik vond dit erg fijn omdat dit is hoe ik de meeste code van andere websites zie die gebouwd zijn in react/laravel. Dit is ook handig voor later als ik een stage loop en daar een framework ga gebruiken voor een website.
+
+Aan 1 kant vond ik dat erg fijn maar aan de andere kant erg irritant met files vinden als ik iets moest aanpassen. Met vanilla code heb je eigenlijk maar een paar bestanden maar in een framework zijn dat er zoveel meer. Alle node.js files stonden meer in de weg. Ik vond het erg cool om te werken met een nieuwe technologie die ik nooit eerder heb gebruikt: THREE.js! Eigenlijk het werken met de library globe.gl (die THREE.js gebruikt en webgl). Ik heb het gevoel dat ik astro nu 
+veel beter begrijp en veel meer wil gaan doen met Three.js nu dat ik al de basis kennis heb en weet hoe ik het kan gaan gebruiken in een project.
 
 #### Wat ging goed?
-De overal website maken!
+De overal website maken! Het design is simpel maar doet wat het moet doen. Ik ben blij met hoe het er uit ziet en dat ik verschillende components heb kunnen 
+gebruiken op 1 main pagina. Data inladen was soms erg irritant maar toen ik 1 puntje had waren de andere punten met data niet moeilijk meer om in te laten en te laten zien op de 3d bol, vooral hier was ik erg blij mee.
+
+De detail pagina maken was eigenlijk ook makkelijker dan ik eerst dacht. Met wat hulp van Cyd en de workshop met de katten pagina ging het best wel snel en had ik 
+een detail pagina voor alle vluchten.
 
 #### Wat kon beter/wat was moeilijk?
-Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik problemen met de API omdat die werd geblokeerd door onrender en netlify. Er zit een limit op opensky en waardoor ik steeds een timeout error kreeg van opensky. Nadat ik een halve dag met Jad naar deze error had gekeken waren er volgens hem nog 2 opties:
+Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik problemen met de API omdat die werd geblokeerd door onrender en Netlify. Er zit een limit op opensky en waardoor ik steeds een timeout error kreeg van opensky. Nadat ik een halve dag met Jad naar deze error had gekeken waren er volgens hem nog 2 opties:
 - Een nieuwe API vinden (pro's de site zou makkelijker online gezet worden, con's kost misschien te veel tijd om een heel nieuwe API in de bestaande site te gooien aangezien ik al de data uit opensky heb gehaald).
 - Een if statement maken voor als de site op onrender zit. Als de site op onrender zit dan fetched ie de data uit een .json bestand in plaats van de API online. (pro's de site kan live worden gezet! con's nu wordt de data gefetched uit een .json document en niet uit een API).
 
@@ -292,11 +298,18 @@ Ik had ook problemen met de styling die half niet werd geladen op mijn website. 
 
 Ik ben niet helemaal blij met de styling van de 3d globe. Ik had niet een goede gratis texture van het internet kunnen plukken om de wereld er minder basic uit te laten zien.
 De gratis textures die ik wel had gevonden waren lage kwaliteit en niet super mooi:
-<img src="readme/test1.png">
-<img src="readme/test2.png">
-<img src="readme/test3.png">
-<img src="readme/test4.png">
+<img width="320px" height="300px" src="readme/test1.png">
+<img width="300px" height="300px" src="readme/test2.png">
+<img width="300px" height="300px" src="readme/test3.png">
+<img width="300px" height="300px" src="readme/test4.png">
+<img width="300px" height="300px" src="readme/test5.png">
 
+Dus uiteindelijk ben ik gegaan voor een normale texture. 
+
+#### Wat ik nog zou willen toevoegen
+- Ik zou nog de inline css in een aparte .css file willen zetten en eigenlijk hetzelfde voor de JS voor de netheid
+- Meer animaties in de site zetten nu is alles static behalve de 3d globe
+- Betere responsive styling (oops)
 
 ### Bronnen
 [scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)

@@ -19,17 +19,24 @@ const southAmericaInfo = staticSAmerica;
 const ausInfo = staticDataAus;
 let onrender = import.meta.env.ONRENDER;
 
-// if (onrender)
-// {
+if (onrender)
+{
 	flightInfo = staticData;
-// }
-// else {
-// 	const base = "https://opensky-network.org/api/states/all?";
-// 	const aus = "lamin=-43.6&lomin=113.2&lamax=-10.7&lomax=153.6";
-// 	const url = base + aus;
-// 	const response = await fetch(url);
-// 	flightInfo = await response.json();
-// }
+}
+else {
+	const base = "https://opensky-network.org/api/states/all?";
+
+	const aus = "lamin=-43.6&lomin=113.2&lamax=-10.7&lomax=153.6";
+	const europe = "lamin=34.5&lomin=-31.3&lamax=71.2&lomax=40.0";
+	const southAm = "lamin=-55.9&lomin=-81.3&lamax=12.5&lomax=-34.8";
+	const northAm = "lamin=7.2&lomin=-168.0&lamax=83.6&lomax=-52.6";
+	const afr = "lamin=-34.8&lomin=-17.5&lamax=37.3&lomax=51.4";
+	const asia = "lamin=-10.0&lomin=26.0&lamax=77.7&lomax=180.0";
+
+	const url = base + afr;
+	const response = await fetch(url);
+	flightInfo = await response.json();
+}
 
 ---
 
@@ -51,10 +58,9 @@ let onrender = import.meta.env.ONRENDER;
 		<script define:vars={{ flightInfo, europeInfo, asiaInfo, africaInfo, northAmericaInfo, southAmericaInfo, ausInfo}} type="module">
 			// @ts-nocheck
 			const globe = Globe()
-			.globeImageUrl('./earthmap1k.jpg')
-			.width(905)
-  			.height(905);
-	
+			.globeImageUrl('./big.jpg')
+			.backgroundColor('#141414');
+
 			function updateGlobe(data) {
 				const points = data.states
 					.filter(s =>
@@ -63,10 +69,9 @@ let onrender = import.meta.env.ONRENDER;
 						isFinite(Number(s[5])) && isFinite(Number(s[6]))
 					)
 					.map(state => ({
-					lat: state[6],
-					lng: state[5],
+						lat: state[6],
+						lng: state[5],
 					}));
-
 				globe
 				.hexBinPointsData(points)
 				.hexBinPointLat('lat')
@@ -85,10 +90,9 @@ let onrender = import.meta.env.ONRENDER;
 					if (sumWeight > 5)  return 'rgba(255, 255, 0, 1)';
 					return 'rgba(255, 255, 255, 1)';
 				})
-					.arcsData(points)
+				.arcsData(points)
 				}
-				updateGlobe(flightInfo);
-
+			updateGlobe(flightInfo);
 			document.getElementById('allBtn').addEventListener('click', () => updateGlobe(flightInfo));
 			document.getElementById('asiaBtn').addEventListener('click', () => updateGlobe(asiaInfo));
 			document.getElementById('europeBtn').addEventListener('click', () => updateGlobe(europeInfo));

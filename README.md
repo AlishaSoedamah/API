@@ -6,6 +6,7 @@
 ├── src/
 │   └── pages/
 │       └── index.astro
+│       └── [flight].astro
 └── package.json
 ```
 
@@ -193,8 +194,7 @@ Blijkbaar blokeerd Opensky iets waardoor het live zetten steeds niet lukt.
 
 ```
 
-Nog meer problemen: Opensky gebruikt alleen de longitude and latitude van waar het vliegtuig NU staat en niet de 
-start/eind punten. 
+Nog meer problemen: Opensky gebruikt alleen de longitude and latitude van waar het vliegtuig NU staat en niet de start/eind punten van de vliegtuigen. 
 Ik ga nu visualiseren waar de vliegtuigen staan i.p.v de arc maken.
 
 Particles Layer?
@@ -231,23 +231,70 @@ Wat we hebben besproken:
 - Doe meer met de detail pagina -> hoogte van vliegtuigen laten zien
 - Meer lievde voor de UI
 - globe.gl gebruiken mag
-- labels toevoegen aan de punten op de 3d globe
+- labels toevoegen aan de punten op de 3d globe?
 - Filter opties toevoegen
 - Op de detail pagina mag de 3d wereld terug komen
 
-Todos voor de deadline (8 mei)
+Todos voor de deadline (7 mei 6 uur)
 - [x] finesse de stijl van de website 
 - [x] zoek filters
-- [ ] detail pagina betere styling 
+- [x] detail pagina betere styling 
+
+Geen tijd meer voor :'(
 - [ ] visuals van de wereld
 - [ ] misschien een extra animatie voor waar het vliegtuig staat op detail pagina
-
-~~ theme switch voor de texture van de wereldbol~~
+- [ ] theme switch voor de texture van de wereldbol
 
 </details>
 
 #### 06.05.26
-Laatste dingen gedaan/styling op de site
+Laatste dingen gedaan/styling op de site.
+Ik bleef maar errors krijgen omdat bepaalde data niet initialized was als de globe nog aan het laden was:
+<img src="readme/errors.png">
+<img src="readme/nan.png">
+Toen vroeg ik aan claude wat de oplossing voor deze errors zou kunnen zijn: 
+<img src="readme/claude.png">
+Maar dit deed eigenlijk helemaal niets en de errors waren er nog steeds.
 
+Uiteindelijk had ik wel een suppression functie van claude gekregen die werkte: 
 
+Error suppression gevonden via claude
+AI code 
+```
+	// Suppress known globe.gl internal NaN warning
+	const _error = console.error.bind(console);
+		console.error = (...args) => {
+		if (typeof args[0] === 'string' && args[0].includes('computeBoundingSphere')) return;
+		_error(...args);
+	};
+```
+
+### Eind reflectie
+Ik kijk terug op dit vak als 1 van de leukere dingen uit de minor. We mochten echt experiementeren met een framework in plaats van vanilla html, css en js. Ik vond dit erg fijn omdat dit is hoe ik de meeste code van andere websites zie die gebouwd zijn in react/laravel.
+Aan 1 kant vond ik dat erg fijn maar aan de andere kant erg irritant met files vinden als ik iets moest aanpassen. Ik vond het erg cool om te werken met een nieuwe technologie die ik nooit eerder heb gebruikt: THREE.js! Eigenlijk het werken met de library globe.gl (die THREE.js gebruikt)
+
+### Wat ging goed?
+
+#### Wat kon beter/wat was moeilijk?
+Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik problemen met de API omdat die werd geblokeerd door onrender en netlify. Er zit een limit op opensky en waardoor ik steeds een timeout error kreeg van opensky. Nadat ik een halve dag met Jad naar deze error had gekeken waren er volgens hem nog 2 opties:
+- Een nieuwe API vinden (pro's de site zou makkelijker online gezet worden, con's kost misschien te veel tijd om een heel nieuwe API in de bestaande site te gooien aangezien ik al de data uit opensky heb gehaald).
+- Een if statement maken voor als de site op onrender zit. Als de site op onrender zit dan fetched ie de data uit een .json bestand in plaats van de API online. (pro's de site kan live worden gezet! con's nu wordt de data gefetched uit een .json document en niet uit een API).
+
+Ik heb de tweede optie gekozen omdat ik toch wel dezelfde data wou gebruiken zonder een hele refactor te doen op de website. Omdat ik dit probleem pas door had in de
+laatste week waar ik ook echt nog aan de website kon werken vond ik dit een goede oplossing die ik nog wel kon redden met de deadline.
+
+Ik had ook problemen met de styling die half niet werd geladen op mijn website. Door de global.css in de public folder te zetten en een import te doen op de index.astro was dit wel gelukt gelukkig.
+
+Ik ben niet helemaal blij met de styling van de 3d globe. Ik had niet een goede gratis texture van het internet kunnen plukken om de wereld er minder basic uit te laten zien.
+De gratis textures die ik wel had gevonden waren lage kwaliteit en niet super mooi:
+<img src="readme/test1.png">
+<img src="readme/test2.png">
+<img src="readme/test3.png">
+<img src="readme/test4.png">
+
+### Bronnen
 [scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)
+[globe.gl, backgroundColor](https://globe.gl/)
+[THREE.JS](https://threejs.org/manual/)
+[Texture](https://stock.adobe.com/nl/images/world-map-illuminated-with-glowing-city-lights-and-coastlines-on-a-dark-black-background/1893362970)
+- Claude en andere AI code heb ik gebruikt om errors uit de code te halen en een basis structuur op te zetten voor de code van de searchbar/filter functie

@@ -314,7 +314,7 @@ Met deze code is dat gelukt:
 
 Toen ik de
 <img src="readme/render.png">
-zag was ik erg blij.
+zag was ik erg blij.`
 
 Ik had ook problemen met de styling die half niet werd geladen op mijn website. Door de global.css in de public folder te zetten en een import te doen op de index.astro was dit wel gelukt gelukkig.
 

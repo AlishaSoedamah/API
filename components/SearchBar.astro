@@ -42,17 +42,17 @@ const {flightInfo} = Astro.props;
 
   function filterFlights() {
     const query = searchBar.value.toLowerCase().trim();
-    const cards = flightList?.querySelectorAll('[data-title]');
+    const cards = flightList.querySelectorAll('[data-title]');
 
-    cards?.forEach(card => {
-      const title = card.getAttribute('data-title')?.toLowerCase() ?? '';
+    cards.forEach(card => {
+      const title = card.getAttribute('data-title').toLowerCase();
 
       const matches = title.includes(query);
       (card as HTMLElement).style.display = matches ? '' : 'none';
     });
   }
-  searchBar?.addEventListener('input', filterFlights);
-  searchBar?.addEventListener('keydown', (e) => {
+  searchBar.addEventListener('input', filterFlights);
+  searchBar.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') filterFlights();
   });
 </script>

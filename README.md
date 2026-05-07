@@ -269,7 +269,7 @@ AI code
 	};
 ```
 
-### Eind reflectie
+### Eindreflectie
 Ik kijk terug op dit vak als 1 van de leukere maar uitdagende projecten uit de minor. We mochten echt experimenteren met een framework in plaats van vanilla html, css en js. Ik vond dit erg fijn omdat dit is hoe ik de meeste code van andere websites zie die gebouwd zijn in react/laravel. Dit is ook handig voor later als ik een stage loop en daar een framework ga gebruiken voor een website.
 
 Aan 1 kant vond ik dat erg fijn maar aan de andere kant erg irritant met files vinden als ik iets moest aanpassen. Met vanilla code heb je eigenlijk maar een paar bestanden maar in een framework zijn dat er zoveel meer. Alle node.js files stonden meer in de weg. Ik vond het erg cool om te werken met een nieuwe technologie die ik nooit eerder heb gebruikt: THREE.js! Eigenlijk het werken met de library globe.gl (die THREE.js gebruikt en webgl). Ik heb het gevoel dat ik astro nu 
@@ -290,6 +290,28 @@ Eigenlijk alles met de astro site op onrender online krijgen. Eerst had ik probl
 Ik heb de tweede optie gekozen omdat ik toch wel dezelfde data wou gebruiken zonder een hele refactor te doen op de website. Omdat ik dit probleem pas door had in de
 laatste week waar ik ook echt nog aan de website kon werken vond ik dit een goede oplossing die ik nog wel kon redden met de deadline.
 
+Met deze code is dat gelukt:
+```
+	if (onrender)
+	{
+		flightInfo = staticData;
+	}
+	else {
+		const base = "https://opensky-network.org/api/states/all?";
+
+		const aus = "lamin=-43.6&lomin=113.2&lamax=-10.7&lomax=153.6";
+		const europe = "lamin=34.5&lomin=-31.3&lamax=71.2&lomax=40.0";
+		const southAm = "lamin=-55.9&lomin=-81.3&lamax=12.5&lomax=-34.8";
+		const northAm = "lamin=7.2&lomin=-168.0&lamax=83.6&lomax=-52.6";
+		const afr = "lamin=-34.8&lomin=-17.5&lamax=37.3&lomax=51.4";
+		const asia = "lamin=-10.0&lomin=26.0&lamax=77.7&lomax=180.0";
+
+		const url = base + afr;
+		const response = await fetch(url);
+		flightInfo = await response.json();
+	}
+```
+
 Toen ik de
 <img src="readme/render.png">
 zag was ik erg blij.
@@ -306,10 +328,16 @@ De gratis textures die ik wel had gevonden waren lage kwaliteit en niet super mo
 
 Dus uiteindelijk ben ik gegaan voor een normale texture. 
 
-#### Wat ik nog zou willen toevoegen
+#### Wat ik nog zou willen toevoegen met meer tijd
 - Ik zou nog de inline css in een aparte .css file willen zetten en eigenlijk hetzelfde voor de JS voor de netheid
 - Meer animaties in de site zetten nu is alles static behalve de 3d globe
 - Betere responsive styling (oops)
+- Labels toevoegen aan de punten op de 3d bol
+
+Ik had tijdens dit vak wel last van te weinig tijd door smashing conf en ook doordat ik in de 1ste week nog niet echt een idee had van wat ik precies ging bouwen. In week 2 maakte ik wel grotere stappen door de opzet van de pagina te maken en door de 3d bol in de site te gooien. Door smashing conf en the web you want in week 3 had ik bijna niets aan de site kunnen doen behalve globe.gl in de site te zetten. In week 4 had ik wel iets
+meer gedaan maar het voelde niet alsof ik genoeg heb kunnen doen. Uiteindelijk heb ik wel de website af kunnen maken maar had ik wel 
+meer de stijl willen finetunen als ik de tijd ervoor had/meer layouts proberen om te zien wat er misschien beter bij zou passen dan het
+huidige design van de pagina.
 
 ### Bronnen
 [scrollbars](https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll)
